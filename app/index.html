@@ -9,6 +9,7 @@
   <title>My AngularJS App</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="app.css">
@@ -25,7 +26,13 @@
   <![endif]-->
 
   <!-- <div ng-view></div> -->
-  <div ui-view></div>
+  <!-- <div ui-view></div> -->
+    <div class="container">
+        <a ui-sref="auth">Auth</a>
+        <a ui-sref="jokes">Jokes</a>
+        <!-- <a ui-sref="view2">View 2</a> -->
+        <div ui-view="jokesContent"></div>
+    </div>
 
   <div>Angular seed app: v<span app-version></span></div>
 
@@ -35,8 +42,11 @@
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/satellizer/satellizer.js"></script>
+  <script src="bower_components/angular-permission/dist/angular-permission.js"></script>
   <script src="app.js"></script>
-  <script src="view1/view1.js"></script>
+  <script src="view_auth/auth.js"></script>
+  <script src="view_jokes/jokes.js"></script>
   <script src="view2/view2.js"></script>
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>

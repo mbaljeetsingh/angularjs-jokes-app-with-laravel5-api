@@ -1,0 +1,18 @@
+<!-- public/views/userView.html -->
+
+<div class="col-sm-6 col-sm-offset-3">
+    <div class="well">
+        <h3>Jokes Available for {{currentUser.name}}</h3>
+        <button class="btn btn-danger" ng-click="jokes.logout()">Logout</button>
+        <ul class="list-group" ng-if="jokes.jokes">
+            <li class="list-group-item" ng-repeat="jokes in jokes.jokes">
+                <h4>{{jokes.joke}}</h4>
+                <h5>{{jokes.submitted_by}}</h5>
+            </li>
+        </ul>
+        <div class="alert alert-danger" ng-if="jokes.error">
+            <strong>There was an error: </strong> {{jokes.error}}
+            <br>Please go back and login again
+        </div>
+    </div>
+</div>

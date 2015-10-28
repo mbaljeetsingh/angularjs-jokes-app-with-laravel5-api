@@ -6,8 +6,14 @@ angular.module('myApp.view2', ['ui.router'])
   $stateProvider
   .state('view2', {
     url: '/view2',
-    templateUrl: "view2/view2.html",
-    controller: 'View2Ctrl'
+
+    views: {
+      'jokesContent': {
+        templateUrl: "view2/view2.html",
+    	controller: 'View2Ctrl'
+      }
+    }
+    
   })
 }])
 
