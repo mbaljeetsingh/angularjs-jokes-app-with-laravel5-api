@@ -16,6 +16,20 @@ angular.module('myApp', [
 // }]);
 
 .run(function (Permission, $rootScope, $state, $auth) {
+
+      $rootScope.logout = function() {
+
+      $auth.logout().then(function() {
+
+          // Remove the authenticated user from local storage
+          localStorage.removeItem('user');
+
+          // Remove the current user info from rootscope
+          $rootScope.currentUser = null;
+          $state.go('auth');
+      });
+      }
+
       $rootScope.currentUser = JSON.parse(localStorage.getItem('user'));
       // Define anonymous role
       Permission

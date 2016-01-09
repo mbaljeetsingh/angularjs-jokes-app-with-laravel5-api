@@ -17,6 +17,6 @@ angular.module('myApp.view2', ['ui.router'])
   })
 }])
 
-.controller('View2Ctrl', [function() {
+.controller('View2Ctrl', ['$http', function($http) {
 
 }]);

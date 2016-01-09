@@ -1,18 +1,44 @@
-<!-- public/views/userView.html -->
-
 <div class="col-sm-6 col-sm-offset-3">
-    <div class="well">
-        <h3>Jokes Available for {{currentUser.name}}</h3>
-        <button class="btn btn-danger" ng-click="jokes.logout()">Logout</button>
-        <ul class="list-group" ng-if="jokes.jokes">
-            <li class="list-group-item" ng-repeat="jokes in jokes.jokes">
-                <h4>{{jokes.joke}}</h4>
-                <h5>{{jokes.submitted_by}}</h5>
+    
+        <!-- <h3></h3> -->
+        <!-- <button class="btn btn-danger" ng-click="jokes.logout()">Logout</button> -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Add new joke.." ng-model="jokes.joke">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" ng-click="jokes.addJoke()">Add!</button>
+                  </span>
+                </div><!-- /input-group -->
+              </div><!-- /.col-lg-6 -->
+            <!-- <div class="col-md-4">
+                <input type='text' ng-model="jokes.joke">
+                <button class="btn btn-primary btn-sm" ng-click="jokes.addJoke()">Add</button>
+                <i ng-show="loading" class="fa fa-spinner fa-spin"></i>
+            </div> -->
+        </div>
+        <br>
+        <div>
+        <!-- <ul class="list-group" ng-if="jokes.jokes"> -->
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="joke in jokes.jokes">
+                <span ng-hide="editEnabled">
+                            {{joke.joke}}
+                                <a href="#" ng-click="editEnabled=!editEnabled"><span class="glyphicon glyphicon-pencil" ></span></a>
+                </span>
+                <span ng-show="editEnabled">
+                            <input ng-model="joke.joke">
+                            <a href="#" ng-click="editEnabled=!editEnabled; jokes.updateJoke(joke)"><span class="glyphicon glyphicon-ok" ></span></a>
+                </span>
+                <!-- <h4>{{joke.joke}}</h4> -->
+                <span style="cursor: pointer;" class="glyphicon glyphicon-trash" ng-click="jokes.deleteJoke($index, joke.joke_id)"></span>
+                <h5>{{joke.submitted_by}}</h5>
             </li>
         </ul>
+        <button class="btn btn-success" ng-click="jokes.loadMore()" style="float:right">Load More....</button>
         <div class="alert alert-danger" ng-if="jokes.error">
             <strong>There was an error: </strong> {{jokes.error}}
-            <br>Please go back and login again
+            <br>Please go back and login again...
         </div>
     </div>
 </div>

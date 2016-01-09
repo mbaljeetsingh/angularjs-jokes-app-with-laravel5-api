@@ -23,16 +23,16 @@ angular.module('myApp.auth', [])
 
 .controller('AuthCtrl', ['$auth', '$state', '$http', '$rootScope', function($auth, $state, $http, $rootScope) {
 
-      var jk = this;
+      var vm = this;
 
-        jk.loginError = false;
-        jk.loginErrorText;
+        vm.loginError = false;
+        vm.loginErrorText;
 
-        jk.login = function() {
+        vm.login = function() {
 
             var credentials = {
-                email: jk.email,
-                password: jk.password
+                email: vm.email,
+                password: vm.password
             }
 
             $auth.login(credentials).then(function() {
@@ -50,9 +50,9 @@ angular.module('myApp.auth', [])
                     $state.go('jokes');
                 })
                 .error(function(){
-                    jk.loginError = true;
-                    jk.loginErrorText = error.data.error;
-                    console.log(jk.loginErrorText);
+                    vm.loginError = true;
+                    vm.loginErrorText = error.data.error;
+                    console.log(vm.loginErrorText);
                 })
             });
         }
